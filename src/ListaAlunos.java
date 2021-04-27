@@ -55,4 +55,35 @@ public class ListaAlunos {
         lista[tamanhoLista] = null;
 
     }
+    //Metodo para ordenar o vetor de alunos
+    void ordenar() {
+        System.out.println("Inicio da ordenação *******************************");
+        for (int i = 1; i < tamanhoLista; i++) {
+            System.out.println("Inicio do FOR");
+            Alunos alunoPosicaoBase = lista[i];
+            System.out.println("Posição " + i + " : " + alunoPosicaoBase.nome);
+            int indicePosicaoBase = i;
+
+            while (indicePosicaoBase > 0) {
+                System.out.println("Inicio while");
+                int indicePosicaoAnterior = indicePosicaoBase - 1;
+                Alunos alunoPosicaoAnterior = lista[indicePosicaoAnterior];
+                System.out.println("Posição Anterior  " + indicePosicaoAnterior + " : " + alunoPosicaoAnterior.nome);
+                Boolean alunoPosicaoAnteriorVemDepoisDe = alunoPosicaoAnterior == null
+                        || alunoPosicaoAnterior.vemDepoisDe(alunoPosicaoBase);
+                if (alunoPosicaoAnteriorVemDepoisDe) {
+                    System.out.println("Iniciio do IF");
+                    lista[indicePosicaoBase] = lista[indicePosicaoAnterior];
+                    indicePosicaoBase--;
+                } else {
+                    break;
+                }
+                lista[indicePosicaoBase] = alunoPosicaoBase;
+
+            }
+            System.out.println("Fim ******************************************");
+        }
+
+    }
+
 }
